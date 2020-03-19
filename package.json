@@ -47,6 +47,7 @@
     "@babel/plugin-proposal-class-properties": "7.7.4",
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
     "@babel/plugin-syntax-dynamic-import": "7.7.4",
+    "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/polyfill": "7.7.0",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "7.7.4",
@@ -79,6 +80,7 @@
     "react-dom": "^16.3.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.8.7",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
     "@rooks/use-mutation-observer": "3.4.2",

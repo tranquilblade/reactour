@@ -20,6 +20,7 @@ import {
 import { getNodeRect, getWindow, inView, isBody } from './helpers'
 import { propTypes, defaultProps } from './propTypes'
 import CN from './classNames'
+import 'regenerator-runtime/runtime'
 
 const noop = () => {}
 const Tour = ({
