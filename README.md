@@ -15,24 +15,10 @@
 
 <br />
 
-> ⚠️ The `master` branch is currently in _development_. Please use the [v1 branch](https://github.com/elrumordelaluz/reactour/tree/v1) to follow the current versions published.
-
-<br />
-
 ## Install
 
 ```zsh
-npm i -S reactour
-# or
 yarn add reactour
-```
-
-<small>From `v1.9.1` [styled-components](https://www.styled-components.com/) it isn't bundled into the package and is required `styled-components@^4` and `react@^16.3` due to the use of [createRef](https://reactjs.org/docs/refs-and-the-dom.html#creating-refs), so: </small>
-
-```zsh
-npm i -S styled-components@^4.0.0
-# or
-yarn add styled-components@^4.0.0
 ```
 
 ## Usage
@@ -66,6 +52,12 @@ const steps = [
 ]
 ```
 
+## Publishing
+
+Follow the instructions here to log into Github Packages: https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages
+
+Then run `npm publish`
+
 ### Tour Props
 
 #### accentColor
@@ -83,6 +75,7 @@ Default: `#007aff`
 Type: `object`
 
 Default:
+
 ```js
     // attribute to associate the dialog with a title for screen readers
     ariaLabelledBy: null,
