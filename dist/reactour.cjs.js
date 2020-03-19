@@ -18,6 +18,42 @@ var reactDom = require('react-dom');
 var styled = _interopDefault(require('@emotion/styled'));
 var PropTypes = _interopDefault(require('prop-types'));
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -917,83 +953,92 @@ var Tour = function Tour(_ref) {
     setCurrent(step);
   }
 
-  function showStep(nextStep) {
-    var step, _getWindow, w, h, node, nodeRect, parentScroll, offset;
+  function showStep(_x) {
+    return _showStep.apply(this, arguments);
+  }
 
-    return regeneratorRuntime.async(function showStep$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            step = steps[nextStep] || steps[current];
-            _getWindow = getWindow(), w = _getWindow.w, h = _getWindow.h;
+  function _showStep() {
+    _showStep = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee(nextStep) {
+      var step, _getWindow2, w, h, node, nodeRect, parentScroll, offset;
 
-            if (!(step.actionBefore && typeof step.actionBefore === 'function')) {
-              _context.next = 5;
-              break;
-            }
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              step = steps[nextStep] || steps[current];
+              _getWindow2 = getWindow(), w = _getWindow2.w, h = _getWindow2.h;
 
-            _context.next = 5;
-            return regeneratorRuntime.awrap(step.actionBefore());
-
-          case 5:
-            node = step.selector ? document.querySelector(step.selector) : null;
-
-            if (step.observe) {
-              observer.current = document.querySelector(step.observe);
-            }
-
-            if (node) {
-              // DOM node exists
-              nodeRect = getNodeRect(node); // step is outside view
-
-              if (!inView(_objectSpread2({}, nodeRect, {
-                w: w,
-                h: h,
-                threshold: inViewThreshold
-              }))) {
-                parentScroll = Scrollparent(node);
-                offset = scrollOffset ? scrollOffset : nodeRect.height > h ? -25 : -(h / 2) + nodeRect.height / 2;
-                scrollSmooth.to(node, {
-                  context: isBody(parentScroll) ? window : parentScroll,
-                  duration: scrollDuration,
-                  offset: offset,
-                  callback: function callback(_node) {
-                    makeCalculations(getNodeRect(_node), step.position);
-                  }
-                });
-              } else {
-                makeCalculations(nodeRect, step.position);
+              if (!(step.actionBefore && typeof step.actionBefore === 'function')) {
+                _context.next = 5;
+                break;
               }
-            } else {
-              dispatch({
-                type: 'NO_DOM_NODE',
-                helperPosition: step.position,
-                w: w,
-                h: h,
-                inDOM: false
-              });
-            }
 
-            if (!(step.action && typeof step.action === 'function')) {
+              _context.next = 5;
+              return step.actionBefore();
+
+            case 5:
+              node = step.selector ? document.querySelector(step.selector) : null;
+
+              if (step.observe) {
+                observer.current = document.querySelector(step.observe);
+              }
+
+              if (node) {
+                // DOM node exists
+                nodeRect = getNodeRect(node); // step is outside view
+
+                if (!inView(_objectSpread2({}, nodeRect, {
+                  w: w,
+                  h: h,
+                  threshold: inViewThreshold
+                }))) {
+                  parentScroll = Scrollparent(node);
+                  offset = scrollOffset ? scrollOffset : nodeRect.height > h ? -25 : -(h / 2) + nodeRect.height / 2;
+                  scrollSmooth.to(node, {
+                    context: isBody(parentScroll) ? window : parentScroll,
+                    duration: scrollDuration,
+                    offset: offset,
+                    callback: function callback(_node) {
+                      makeCalculations(getNodeRect(_node), step.position);
+                    }
+                  });
+                } else {
+                  makeCalculations(nodeRect, step.position);
+                }
+              } else {
+                dispatch({
+                  type: 'NO_DOM_NODE',
+                  helperPosition: step.position,
+                  w: w,
+                  h: h,
+                  inDOM: false
+                });
+              }
+
+              if (!(step.action && typeof step.action === 'function')) {
+                _context.next = 11;
+                break;
+              }
+
               _context.next = 11;
-              break;
-            }
+              return step.action(node);
 
-            _context.next = 11;
-            return regeneratorRuntime.awrap(step.action(node));
-
-          case 11:
-          case "end":
-            return _context.stop();
+            case 11:
+            case "end":
+              return _context.stop();
+          }
         }
-      }
-    });
+      }, _callee);
+    }));
+    return _showStep.apply(this, arguments);
   }
 
   function makeCalculations(nodeRect, helperPosition) {
-    var _getWindow2 = getWindow(),
-        w = _getWindow2.w,
-        h = _getWindow2.h;
+    var _getWindow = getWindow(),
+        w = _getWindow.w,
+        h = _getWindow.h;
 
     var _getNodeRect = getNodeRect(helper.current),
         helperWidth = _getNodeRect.width,

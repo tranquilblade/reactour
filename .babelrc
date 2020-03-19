@@ -1,5 +1,16 @@
 {
-  "presets": ["@babel/env", "@babel/react"],
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current",
+          "browsers": " last 2 versions"
+        }
+      }
+    ],
+    "@babel/react"
+  ],
   "plugins": [
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-syntax-dynamic-import",
