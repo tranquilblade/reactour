@@ -21,7 +21,8 @@ import { getNodeRect, getWindow, inView, isBody } from './helpers'
 import { propTypes, defaultProps } from './propTypes'
 import CN from './classNames'
 
-function Tour({
+const noop = () => {}
+const Tour = ({
   children,
   isOpen,
   startAt,
@@ -33,7 +34,7 @@ function Tour({
   disableKeyboardNavigation,
   className,
   closeWithMask,
-  onRequestClose,
+  onRequestClose = noop,
   onAfterOpen,
   onBeforeClose,
   CustomHelper,
@@ -52,7 +53,8 @@ function Tour({
   maskSpace,
   showCloseButton,
   accessibilityOptions,
-}) {
+  badgeContent,
+}) => {
   const [current, setCurrent] = useState(0)
   const [started, setStarted] = useState(false)
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -119,6 +121,7 @@ function Tour({
       window.removeEventListener('keydown', keyHandler)
       window.removeEventListener('resize', debouncedShowStep)
     }
+    // eslint-disable-next-line
   }, [current, isOpen])
 
   function keyHandler(e) {
@@ -378,9 +381,7 @@ function Tour({
                           ? lastStepNextButton
                             ? close
                             : () => {}
-                          : typeof nextStep === 'function'
-                          ? nextStep
-                          : this.nextStep
+                          : nextStep
                       }
                       disabled={
                         !lastStepNextButton && current === steps.length - 1

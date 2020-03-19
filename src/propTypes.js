@@ -80,6 +80,6 @@ export const defaultProps = {
   updateDelay: 1,
   disableInteraction: false,
   rounded: 0,
-  accentColor: '#007aff',
+  accentColor: '#fff',
   closeWithMask: true,
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import SvgButton from './SvgButton'
 import PropTypes from 'prop-types'
 
@@ -21,11 +21,7 @@ function Arrow({ className, onClick, inverted, label, disabled }) {
       ) : (
         <svg viewBox="0 0 18.4 14.4">
           <path
-            d={
-              inverted
-                ? 'M17 7.2H1M10.8 1L17 7.2l-6.2 6.2'
-                : 'M1.4 7.2h16M7.6 1L1.4 7.2l6.2 6.2'
-            }
+            d={inverted ? 'M10.8 1L17 7.2l-6.2 6.2' : 'M7.6 1L1.4 7.2l6.2 6.2'}
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
@@ -47,7 +43,7 @@ Arrow.propTypes = {
 }
 
 export default styled(Arrow)`
-  color: ${props => (props.disabled ? '#caccce' : '#646464')};
+  color: ${props => (props.disabled ? '#646464' : '#caccce')};
 
   ${props => (props.inverted ? 'margin-left: 24px;' : 'margin-right: 24px;')};
   ${props =>
@@ -59,6 +55,6 @@ export default styled(Arrow)`
   `};
 
   &:hover {
-    color: ${props => (props.disabled ? '#caccce' : '#000')};
+    color: ${props => (props.disabled ? '#000' : '#fff')};
   }
 `

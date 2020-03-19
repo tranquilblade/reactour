@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import * as hx from '../helpers'
 
 const Guide = styled.div`
@@ -10,12 +10,14 @@ const Guide = styled.div`
   min-width: 150px;
   padding-right: 40px;
   border-radius: ${props.rounded}px;
-  background-color: #fff;
+  background-color: #2D3B45;
   padding: 24px 30px;
   box-shadow: 0 0.5em 3em rgba(0, 0, 0, 0.3);
   color: inherit;
   `
       : ''}
+  background-color: #2D3B45;
+  color: white;
   position: fixed;
   transition: transform 0.3s;
   top: 0;

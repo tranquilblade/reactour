@@ -1,12 +1,6 @@
 export function getNodeRect(node) {
-  const {
-    top,
-    right,
-    bottom,
-    left,
-    width,
-    height,
-  } = node.getBoundingClientRect()
+  const { top = 0, right = 0, bottom = 0, left = 0, width = 0, height = 0 } =
+    node?.getBoundingClientRect() || {}
   return { top, right, bottom, left, width, height }
 }
 
