@@ -1,6 +1,6 @@
 {
   "name": "@instructure/reactour",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Tourist Guide into your React Components",
   "main": "dist/reactour.cjs.js",
   "module": "dist/reactour.esm.js",

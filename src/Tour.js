@@ -89,10 +89,10 @@ const Tour = ({
 
   useEffect(() => {
     const debouncedShowStep = debounce(showStep, 100)
-    window.addEventListener('keydown', keyHandler, false)
     window.addEventListener('resize', debouncedShowStep, false)
 
     if (isOpen) {
+      window.addEventListener('keydown', keyHandler, false)
       if (!started) {
         setStarted(true)
         makeCalculations(
