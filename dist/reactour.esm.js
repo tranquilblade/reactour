@@ -145,7 +145,7 @@ function _taggedTemplateLiteral(strings, raw) {
 }
 
 function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
 
 function _arrayWithHoles(arr) {
@@ -153,10 +153,7 @@ function _arrayWithHoles(arr) {
 }
 
 function _iterableToArrayLimit(arr, i) {
-  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
-    return;
-  }
-
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
   var _arr = [];
   var _n = true;
   var _d = false;
@@ -182,8 +179,25 @@ function _iterableToArrayLimit(arr, i) {
   return _arr;
 }
 
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+  return arr2;
+}
+
 function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
 function _templateObject() {
@@ -196,7 +210,7 @@ function _templateObject() {
   return data;
 }
 var GlobalStyle = function GlobalStyle() {
-  return React.createElement(Global, {
+  return /*#__PURE__*/React.createElement(Global, {
     styles: css(_templateObject())
   });
 };
@@ -259,14 +273,14 @@ function Arrow(_ref) {
       inverted = _ref.inverted,
       label = _ref.label,
       disabled = _ref.disabled;
-  return React.createElement(SvgButton, {
+  return /*#__PURE__*/React.createElement(SvgButton, {
     className: className,
     onClick: onClick,
     "data-tour-elem": "".concat(inverted ? 'right' : 'left', "-arrow"),
     disabled: disabled
-  }, label ? React.createElement(Label, null, label) : React.createElement("svg", {
+  }, label ? /*#__PURE__*/React.createElement(Label, null, label) : /*#__PURE__*/React.createElement("svg", {
     viewBox: "0 0 18.4 14.4"
-  }, React.createElement("path", {
+  }, /*#__PURE__*/React.createElement("path", {
     d: inverted ? 'M10.8 1L17 7.2l-6.2 6.2' : 'M7.6 1L1.4 7.2l6.2 6.2',
     fill: "none",
     stroke: "currentColor",
@@ -307,15 +321,15 @@ function Close(_ref) {
   var className = _ref.className,
       onClick = _ref.onClick,
       ariaLabel = _ref.ariaLabel;
-  return React.createElement(SvgButton, {
+  return /*#__PURE__*/React.createElement(SvgButton, {
     className: className,
     onClick: onClick,
     "aria-label": ariaLabel
-  }, React.createElement("svg", {
+  }, /*#__PURE__*/React.createElement("svg", {
     viewBox: "0 0 9.1 9.1",
     "aria-hidden": true,
     role: "presentation"
-  }, React.createElement("path", {
+  }, /*#__PURE__*/React.createElement("path", {
     fill: "currentColor",
     d: "M5.9 4.5l2.8-2.8c.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4 0L4.5 3.1 1.7.3C1.3-.1.7-.1.3.3c-.4.4-.4 1 0 1.4l2.8 2.8L.3 7.4c-.4.4-.4 1 0 1.4.2.2.4.3.7.3s.5-.1.7-.3L4.5 6l2.8 2.8c.3.2.5.3.8.3s.5-.1.7-.3c.4-.4.4-1 0-1.4L5.9 4.5z"
   })));
@@ -570,101 +584,101 @@ function SvgMask(_ref) {
   var height = safe(targetHeight + padding * 2);
   var top = safe(targetTop - padding);
   var left = safe(targetLeft - padding);
-  return React.createElement(SvgMaskWrapper, {
+  return /*#__PURE__*/React.createElement(SvgMaskWrapper, {
     onClick: onClick
-  }, React.createElement("svg", {
+  }, /*#__PURE__*/React.createElement("svg", {
     width: windowWidth,
     height: windowHeight,
     xmlns: "http://www.w3.org/2000/svg",
     className: className
-  }, React.createElement("defs", null, React.createElement("mask", {
+  }, /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("mask", {
     id: "mask-main"
-  }, React.createElement("rect", {
+  }, /*#__PURE__*/React.createElement("rect", {
     x: 0,
     y: 0,
     width: windowWidth,
     height: windowHeight,
     fill: "white"
-  }), React.createElement("rect", {
+  }), /*#__PURE__*/React.createElement("rect", {
     x: left,
     y: top,
     width: width,
     height: height,
     fill: "black"
-  }), React.createElement("rect", {
+  }), /*#__PURE__*/React.createElement("rect", {
     x: left - 1,
     y: top - 1,
     width: rounded,
     height: rounded,
     fill: "white"
-  }), React.createElement("circle", {
+  }), /*#__PURE__*/React.createElement("circle", {
     cx: left + rounded,
     cy: top + rounded,
     r: rounded,
     fill: "black"
-  }), React.createElement("rect", {
+  }), /*#__PURE__*/React.createElement("rect", {
     x: left + width - rounded + 1,
     y: top - 1,
     width: rounded,
     height: rounded,
     fill: "white"
-  }), React.createElement("circle", {
+  }), /*#__PURE__*/React.createElement("circle", {
     cx: left + width - rounded,
     cy: top + rounded,
     r: rounded,
     fill: "black"
-  }), React.createElement("rect", {
+  }), /*#__PURE__*/React.createElement("rect", {
     x: left - 1,
     y: top + height - rounded + 1,
     width: rounded,
     height: rounded,
     fill: "white"
-  }), React.createElement("circle", {
+  }), /*#__PURE__*/React.createElement("circle", {
     cx: left + rounded,
     cy: top + height - rounded,
     r: rounded,
     fill: "black"
-  }), React.createElement("rect", {
+  }), /*#__PURE__*/React.createElement("rect", {
     x: left + width - rounded + 1,
     y: top + height - rounded + 1,
     width: rounded,
     height: rounded,
     fill: "white"
-  }), React.createElement("circle", {
+  }), /*#__PURE__*/React.createElement("circle", {
     cx: left + width - rounded,
     cy: top + height - rounded,
     r: rounded,
     fill: "black "
-  })), React.createElement("clipPath", {
+  })), /*#__PURE__*/React.createElement("clipPath", {
     id: "clip-path"
-  }, React.createElement("rect", {
+  }, /*#__PURE__*/React.createElement("rect", {
     x: 0,
     y: 0,
     width: windowWidth,
     height: top
-  }), React.createElement("rect", {
+  }), /*#__PURE__*/React.createElement("rect", {
     x: 0,
     y: top,
     width: left,
     height: height
-  }), React.createElement("rect", {
+  }), /*#__PURE__*/React.createElement("rect", {
     x: targetLeft + targetWidth + padding,
     y: top,
     width: safe(windowWidth - targetWidth - left),
     height: height
-  }), React.createElement("rect", {
+  }), /*#__PURE__*/React.createElement("rect", {
     x: 0,
     y: targetTop + targetHeight + padding,
     width: windowWidth,
     height: safe(windowHeight - targetHeight - top)
-  }))), React.createElement("rect", {
+  }))), /*#__PURE__*/React.createElement("rect", {
     x: 0,
     y: 0,
     width: windowWidth,
     height: windowHeight,
     fill: "currentColor",
     mask: "url(#mask-main)"
-  }), React.createElement("rect", {
+  }), /*#__PURE__*/React.createElement("rect", {
     x: 0,
     y: 0,
     width: windowWidth,
@@ -672,7 +686,7 @@ function SvgMask(_ref) {
     fill: "currentColor",
     clipPath: "url(#clip-path)",
     pointerEvents: "auto"
-  }), React.createElement("rect", {
+  }), /*#__PURE__*/React.createElement("rect", {
     x: left,
     y: top,
     width: width,
@@ -800,6 +814,24 @@ var runtime = (function (exports) {
   var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
   var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
 
+  function define(obj, key, value) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+    return obj[key];
+  }
+  try {
+    // IE 8 has a broken Object.defineProperty that only works on DOM objects.
+    define({}, "");
+  } catch (err) {
+    define = function(obj, key, value) {
+      return obj[key] = value;
+    };
+  }
+
   function wrap(innerFn, outerFn, self, tryLocsList) {
     // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
     var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
@@ -870,16 +902,19 @@ var runtime = (function (exports) {
     Generator.prototype = Object.create(IteratorPrototype);
   GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
   GeneratorFunctionPrototype.constructor = GeneratorFunction;
-  GeneratorFunctionPrototype[toStringTagSymbol] =
-    GeneratorFunction.displayName = "GeneratorFunction";
+  GeneratorFunction.displayName = define(
+    GeneratorFunctionPrototype,
+    toStringTagSymbol,
+    "GeneratorFunction"
+  );
 
   // Helper for defining the .next, .throw, and .return methods of the
   // Iterator interface in terms of a single ._invoke method.
   function defineIteratorMethods(prototype) {
     ["next", "throw", "return"].forEach(function(method) {
-      prototype[method] = function(arg) {
+      define(prototype, method, function(arg) {
         return this._invoke(method, arg);
-      };
+      });
     });
   }
 
@@ -898,9 +933,7 @@ var runtime = (function (exports) {
       Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
     } else {
       genFun.__proto__ = GeneratorFunctionPrototype;
-      if (!(toStringTagSymbol in genFun)) {
-        genFun[toStringTagSymbol] = "GeneratorFunction";
-      }
+      define(genFun, toStringTagSymbol, "GeneratorFunction");
     }
     genFun.prototype = Object.create(Gp);
     return genFun;
@@ -914,7 +947,7 @@ var runtime = (function (exports) {
     return { __await: arg };
   };
 
-  function AsyncIterator(generator) {
+  function AsyncIterator(generator, PromiseImpl) {
     function invoke(method, arg, resolve, reject) {
       var record = tryCatch(generator[method], generator, arg);
       if (record.type === "throw") {
@@ -925,14 +958,14 @@ var runtime = (function (exports) {
         if (value &&
             typeof value === "object" &&
             hasOwn.call(value, "__await")) {
-          return Promise.resolve(value.__await).then(function(value) {
+          return PromiseImpl.resolve(value.__await).then(function(value) {
             invoke("next", value, resolve, reject);
           }, function(err) {
             invoke("throw", err, resolve, reject);
           });
         }
 
-        return Promise.resolve(value).then(function(unwrapped) {
+        return PromiseImpl.resolve(value).then(function(unwrapped) {
           // When a yielded Promise is resolved, its final value becomes
           // the .value of the Promise<{value,done}> result for the
           // current iteration.
@@ -950,7 +983,7 @@ var runtime = (function (exports) {
 
     function enqueue(method, arg) {
       function callInvokeWithMethodAndArg() {
-        return new Promise(function(resolve, reject) {
+        return new PromiseImpl(function(resolve, reject) {
           invoke(method, arg, resolve, reject);
         });
       }
@@ -990,9 +1023,12 @@ var runtime = (function (exports) {
   // Note that simple async functions are implemented on top of
   // AsyncIterator objects; they just return a Promise for the value of
   // the final result produced by the iterator.
-  exports.async = function(innerFn, outerFn, self, tryLocsList) {
+  exports.async = function(innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    if (PromiseImpl === void 0) PromiseImpl = Promise;
+
     var iter = new AsyncIterator(
-      wrap(innerFn, outerFn, self, tryLocsList)
+      wrap(innerFn, outerFn, self, tryLocsList),
+      PromiseImpl
     );
 
     return exports.isGeneratorFunction(outerFn)
@@ -1167,7 +1203,7 @@ var runtime = (function (exports) {
   // unified ._invoke helper method.
   defineIteratorMethods(Gp);
 
-  Gp[toStringTagSymbol] = "Generator";
+  define(Gp, toStringTagSymbol, "Generator");
 
   // A Generator should always return itself as the iterator object when the
   // @@iterator function is called on it. Some browsers' implementations of the
@@ -1563,7 +1599,7 @@ var Tour = function Tour(_ref) {
   var helper = useRef(null);
   var observer = useRef(null);
 
-  var a11yOptions = _objectSpread2({}, defaultProps.accessibilityOptions, {}, accessibilityOptions);
+  var a11yOptions = _objectSpread2(_objectSpread2({}, defaultProps.accessibilityOptions), accessibilityOptions);
 
   useMutationObserver(observer, function (mutationList, observer) {
     if (isOpen) {
@@ -1581,10 +1617,11 @@ var Tour = function Tour(_ref) {
   });
   useEffect(function () {
     var debouncedShowStep = debounce(showStep, 100);
-    window.addEventListener('keydown', keyHandler, false);
     window.addEventListener('resize', debouncedShowStep, false);
 
     if (isOpen) {
+      window.addEventListener('keydown', keyHandler, false);
+
       if (!started) {
         setStarted(true);
         makeCalculations({
@@ -1677,9 +1714,7 @@ var Tour = function Tour(_ref) {
   }
 
   function _showStep() {
-    _showStep = _asyncToGenerator(
-    /*#__PURE__*/
-    regeneratorRuntime.mark(function _callee(nextStep) {
+    _showStep = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(nextStep) {
       var step, _getWindow2, w, h, node, nodeRect, parentScroll, offset;
 
       return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -1708,7 +1743,7 @@ var Tour = function Tour(_ref) {
                 // DOM node exists
                 nodeRect = getNodeRect(node); // step is outside view
 
-                if (!inView(_objectSpread2({}, nodeRect, {
+                if (!inView(_objectSpread2(_objectSpread2({}, nodeRect), {}, {
                   w: w,
                   h: h,
                   threshold: inViewThreshold
@@ -1763,9 +1798,9 @@ var Tour = function Tour(_ref) {
         helperWidth = _getNodeRect.width,
         helperHeight = _getNodeRect.height;
 
-    dispatch(_objectSpread2({
+    dispatch(_objectSpread2(_objectSpread2({
       type: 'HAS_DOM_NODE'
-    }, nodeRect, {
+    }, nodeRect), {}, {
       helperWidth: helperWidth,
       helperHeight: helperHeight,
       helperPosition: helperPosition,
@@ -1787,7 +1822,7 @@ var Tour = function Tour(_ref) {
     inDOM: state.inDOM,
     step: current + 1
   }) : steps[current].content);
-  return isOpen ? React.createElement(Portal, null, React.createElement(GlobalStyle, null), React.createElement(SvgMask, {
+  return isOpen ? /*#__PURE__*/React.createElement(Portal, null, /*#__PURE__*/React.createElement(GlobalStyle, null), /*#__PURE__*/React.createElement(SvgMask, {
     onClick: maskClickHandler,
     windowWidth: state.w,
     windowHeight: state.h,
@@ -1800,7 +1835,7 @@ var Tour = function Tour(_ref) {
     className: maskClassName,
     disableInteraction: steps[current].stepInteraction === false || disableInteraction ? !steps[current].stepInteraction : disableInteraction,
     disableInteractionClassName: cn(CN.mask.disableInteraction, highlightedMaskClassName)
-  }), React.createElement(FocusLock, null, React.createElement(Guide, {
+  }), /*#__PURE__*/React.createElement(FocusLock, null, /*#__PURE__*/React.createElement(Guide, {
     ref: helper,
     windowWidth: state.w,
     windowHeight: state.h,
@@ -1823,25 +1858,25 @@ var Tour = function Tour(_ref) {
     className: cn(CN.helper.base, className, _defineProperty({}, CN.helper.isOpen, isOpen)),
     role: "dialog",
     "aria-labelledby": a11yOptions.ariaLabelledBy
-  }, CustomHelper ? React.createElement(CustomHelper, {
+  }, CustomHelper ? /*#__PURE__*/React.createElement(CustomHelper, {
     current: current,
     totalSteps: steps.length,
     gotoStep: goTo,
     close: close,
     content: stepContent
-  }, children) : React.createElement(React.Fragment, null, children, stepContent, showNumber && React.createElement(Badge, {
+  }, children) : /*#__PURE__*/React.createElement(React.Fragment, null, children, stepContent, showNumber && /*#__PURE__*/React.createElement(Badge, {
     "data-tour-elem": "badge"
-  }, typeof badgeContent === 'function' ? badgeContent(current + 1, steps.length) : current + 1), (showButtons || showNavigation) && React.createElement(Controls, {
+  }, typeof badgeContent === 'function' ? badgeContent(current + 1, steps.length) : current + 1), (showButtons || showNavigation) && /*#__PURE__*/React.createElement(Controls, {
     "data-tour-elem": "controls"
-  }, showButtons && React.createElement(Arrow$1, {
+  }, showButtons && /*#__PURE__*/React.createElement(Arrow$1, {
     onClick: prevStep,
     disabled: current === 0,
     label: prevButton ? prevButton : null
-  }), showNavigation && React.createElement(Navigation, {
+  }), showNavigation && /*#__PURE__*/React.createElement(Navigation, {
     "data-tour-elem": "navigation",
     "aria-hidden": !a11yOptions.showNavigationScreenReaders
   }, steps.map(function (s, i) {
-    return React.createElement(Dot, {
+    return /*#__PURE__*/React.createElement(Dot, {
       key: "".concat(s.selector ? s.selector : 'undef', "_").concat(i),
       onClick: function onClick() {
         return goTo(i);
@@ -1854,12 +1889,12 @@ var Tour = function Tour(_ref) {
       className: cn(CN.dot.base, _defineProperty({}, CN.dot.active, current === i)),
       "aria-label": s.navDotAriaLabel
     });
-  })), showButtons && React.createElement(Arrow$1, {
+  })), showButtons && /*#__PURE__*/React.createElement(Arrow$1, {
     onClick: current === steps.length - 1 ? lastStepNextButton ? close : function () {} : nextStep,
     disabled: !lastStepNextButton && current === steps.length - 1,
     inverted: true,
     label: lastStepNextButton && current === steps.length - 1 ? lastStepNextButton : nextButton ? nextButton : null
-  })), showCloseButton && React.createElement(StyledClose, {
+  })), showCloseButton && /*#__PURE__*/React.createElement(StyledClose, {
     onClick: close,
     ariaLabel: a11yOptions.closeButtonAriaLabel
   }))))) : null;
@@ -1882,10 +1917,10 @@ function reducer(state, action) {
       var type = action.type,
           newState = _objectWithoutProperties(action, ["type"]);
 
-      return _objectSpread2({}, state, {}, newState);
+      return _objectSpread2(_objectSpread2({}, state), newState);
 
     case 'NO_DOM_NODE':
-      return _objectSpread2({}, state, {
+      return _objectSpread2(_objectSpread2({}, state), {}, {
         top: state.h + 10,
         right: state.w / 2 + 9,
         bottom: state.h / 2 + 9,
